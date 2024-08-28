@@ -23,3 +23,21 @@ Uma vez "commitado" o código, ele é "escrito em pedra". Você não apaga mais 
 
 ### 6. git log
 - É uma ferramenta poderosa no Git que permite visualizar o histórico de commits de um repositório. Com ele, é possível obter uma visão geral do desenvolvimento do projeto, rastrear as alterações feitas e identificar quando e por quem certas alterações foram realizadas.
+
+## Instalando o Git 
+Baixamos pelo site: https://git-scm.com/downloads
+
+Após instalar abrimos o GitBash.
+
+Para demais informações siga o tópico abaixo.
+
+## Clonando o repositório:
+- Primeiro na minha máquina entro no VScode, abro o terminal.
+  
+- Digito "cd .." e depois "cd Desktop"
+  
+- Após isso digitar: git clone https://github.com/MatheusFerreira-bot/techinf-2023.git
+  
+- Com esse comando o repositório será clonado.
+  
+- Por fim usamos o comando "code ." que abrirá uma janela no VScode com o repositório aberto.
