@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>16. Volume da esfera.</title>
+		<script type="text/javascript" src="../Lib/volumeEsfera.js"></script>
+	</head>
+	<body>
+		<h1>16. Volume da esfera.</h1>
+		<cite>16. Escreva um programa que solicita ao usuário o raio de uma esfera e retorna o volume da esfera.</cite>
+		<br><br>
+	</body>
+</html>
+
+<script>
+	let raio = Number(prompt("Informe o raio:"));
+	let resultado = (4 * Math.PI * Math.pow(raio,3)) / 3;
+
+	document.write(`O volume da esfera é: ${resultado}`);
+</script>
+
