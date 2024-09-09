@@ -1,7 +1,5 @@
 const { csvToLines } = require("./func");
 
-// Função 1 - csvToLines
-
 // 1. Entrada: "nome;idade\nJoão;28\nMaria;32"
 // Saída esperada: ["nome;idade", "João;28", "Maria;32"]
 console.log(csvToLines("\n","nome;idade\nJoão;28\nMaria;32"));
