@@ -108,10 +108,9 @@ let esperadaJSON6 =  [ { Filme: "Parasita", Diretor: "Bong Joon-ho", Ano: "2019"
 let saidaJSON6 = columnsToJSON(linha6, conteudo6);
 console.log(comparacao(esperadaJSON6, saidaJSON6));
 
+
 // Procedimento - printCSV
-let stringCSV = `Filme;Diretor;Ano;Duração;Gênero;País de Origem;Principais Atores;Receita Bruta;Pontuação no Rotten Tomatoes
-Parasite;Bong Joon-ho;2020;132;Drama, Thriller;South Korea;Song Kang-ho, Lee Sun-kyun, Cho Yeo-jeong;$258.7M;0,98
-Green Book;Peter Farrelly;2019;130;Biography, Comedy, Drama;USA;Viggo Mortensen, Mahershala Ali, Linda Cardellini;$321.8M;0,77
-The Shape of Water;Guillermo del Toro;2018;123;Adventure, Drama, Fantasy;USA;Sally Hawkins, Octavia Spencer, Michael Shannon;$195.2M;0,92`;
+const fs = require('fs');   
+const stringCSV = fs.readFileSync('./oscar_best_pictures.csv',{ encoding: 'utf8'});
 
 printCSV(stringCSV);
