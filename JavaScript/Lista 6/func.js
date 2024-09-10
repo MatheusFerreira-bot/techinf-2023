@@ -35,12 +35,11 @@ function extractContent(tabela) {
 }
 
 // Função 5 - rowToJSON
-function rowToJSON(header, content){
+function rowToJSON(header, linha){
     const obj = {}
-
     for (let i = 0; i < header.length; i++){
         let key = header[i];
-        let value = content[i];
+        let value = linha[i];
 
         obj[key] = value;
     }
@@ -56,11 +55,7 @@ Para cada linha, ela cria um objeto json vazio e associa cada valor da linha à 
 O resultado é uma lista de objetos JSON, onde cada objeto é uma representação de uma linha do conteúdo com as chaves do cabeçalho.*/
 function columnsToJSON(header, content) {
     return content.map(linha => {
-        let obj = {};
-        for (let i = 0; i < header.length; i++) {
-            obj[header[i]] = linha[i];
-        }
-        return obj;
+        return rowToJSON(header, linha)
     });
 }
 
