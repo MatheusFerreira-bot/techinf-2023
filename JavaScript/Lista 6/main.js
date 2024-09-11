@@ -1,4 +1,4 @@
-const { comparacao, csvToLines, linesToColumns, extractHeader, extractContent, rowToJSON, columnsToJSON, printCSV } = require("./func");
+const { comparacao, csvToLines, linesToColumns, extractHeader, extractContent, rowToJSON, columnsToJSON, printCSV } = require("./JSDOCS.js");
 
 
 // Função 1 - csvToLines
