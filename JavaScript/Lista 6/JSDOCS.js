@@ -86,7 +86,7 @@ function columnsToJSON(header, content) {
     });
 }
 
-// Procedimento - printCSV
+
 /**
  * Procedimento usado para transformar um arquivo CSV em uma tabela.
  * @param {String} texto - Uma string contendo o conteúdo de um arquivo CSV.
