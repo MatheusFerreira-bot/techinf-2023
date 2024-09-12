@@ -111,6 +111,6 @@ console.log(comparacao(esperadaJSON6, saidaJSON6));
 
 // Procedimento - printCSV
 const fs = require('fs');   
-const stringCSV = fs.readFileSync('./oscar_best_pictures.csv',{ encoding: 'utf8'});
+const stringCSV = fs.readFileSync('./shanghai_ranking_2024.csv',{ encoding: 'utf8'});
 
 printCSV(stringCSV);

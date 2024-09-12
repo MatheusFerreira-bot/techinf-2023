@@ -17,7 +17,7 @@ function comparacao(str1,str2){
  * @returns Uma lista de strings, onde cada string representa uma linha do CSV.
  */
 function csvToLines(texto) {
-    return texto.split('\n'); // Divide o texto nas quebras de linha
+    return texto.trim().split('\n'); // Divide o texto nas quebras de linha
 }
 
 
@@ -28,7 +28,7 @@ function csvToLines(texto) {
  * @returns Uma lista de listas, onde cada lista interna contém as colunas de uma linha do CSV.
  */
 function linesToColumns(linhas) {
-    return linhas.map(linha => linha.split(';')); // Divide cada linha nas vírgulas/";" para obter as colunas
+    return linhas.map(linha => linha.split(',')); // Divide cada linha nas vírgulas/";" para obter as colunas
 }
 
 

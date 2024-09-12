@@ -5,7 +5,7 @@ function comparacao(str1,str2){
 
 // Função 1 - csvToLines
 function csvToLines(texto) {
-    return texto.split('\n'); // Divide o texto nas quebras de linha
+    return texto.trim().split('\n'); // Divide o texto nas quebras de linha
 }
 
 // Função 2 - linesToColumns
