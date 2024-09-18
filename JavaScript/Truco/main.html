@@ -1,78 +1,32 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../Truco/style.css" rel="stylesheet">
-    <title>Document</title>
-</head>
-<body>
-    <main>
-        <div class="nav">
-            <div class="info">Cartas Restantes: 
-                <span id="remaining">0</span>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../Truco/style.css" rel="stylesheet">
+        <title>Document</title>
+    </head>
+    <body>
+        <main>
+            <div class="nav">
+                <div class="info">Cartas Restantes: 
+                    <span id="remaining">0</span>
+                </div>
+                <div class="info">Deck ID:
+                    <span id="deck_id">_</span>
+                </div>
             </div>
-            <div class="info">Deck ID:
-                <span id="deck_id">_</span>
+            <div class="mesa">
+                <div class="carta" id="carta1"></div>
+                <div class="carta" id="carta2"></div>
+                <div class="carta" id="carta3"></div>
+            </div>    
+            <div class="painel">
+                <button class="embaralhar" onClick="embaralharCartas()">Embaralhar cartas</button>
+                <button class="mostarCartas" onClick="olharCartas()">Mostrar cartas</button>
+                <button class="novoBaralho" onClick="novoDeck()">Gerar novo baralho</button>
             </div>
-        </div>
-        <div class="mesa">
-            <div class="carta" id="carta1"></div>
-            <div class="carta" id="carta2"></div>
-            <div class="carta" id="carta3"></div>
-        </div>    
-        <div class="painel">
-            <button class="embaralhar" onClick="embaralharCartas()">Embaralhar cartas</button>
-            <button class="mostarCartas" onClick="olharCartas()">Mostrar cartas</button>
-            <button class="novoBaralho">Gerar novo baralho</button>
-        </div>
-    </main>
-    <script>
-        function getJsonData(respostaAPI){
-                const json = respostaAPI.json();
-                return json;
-        }
-        function atualizaInfo(jsonData){
-            if (!jsonData.success){
-                throw new Error("Erro ao acessar dados da API")
-            }
-            const remaining = jsonData.remaining;
-            const deck_id = jsonData.deck_id;
-            const info1 = document.getElementById('remaining');
-            const info2 = document.getElementById('deck_id');
-            info1.innerText = remaining;
-            info2.innerText = deck_id;
-            return jsonData;
-        }
-        function embaralharCartas(){
-            fetch("https://deckofcardsapi.com/api/deck/2kk0qqi7e3v1/shuffle/?remaining=false")
-            .then(getJsonData)  
-            .then(function(jsonData){
-                console.log = (jsonData);
-                if(jsonData.success){
-                   alert("Baralho Reembaralhado")
-                }      
-            })
-        }
-        function puxaCartas(jsonData){
-                const cards = jsonData.cards;
-                for(let i = 0; i < 3; i++){
-                    const id = `carta${i+1}`;
-                    const card = document.getElementById(id);
-                    let img = card.querySelector('img')
-                    if(img == null){
-                        img = document.createElement('img');
-                    }
-                    img.setAttribute('src', cards[i].image);
-                    card.append(img);
-                }
-        }
-        function olharCartas(){
-            fetch("https://deckofcardsapi.com/api/deck/2kk0qqi7e3v1/draw/?count=3")
-            .then(getJsonData)
-            .then(atualizaInfo)
-            .then(puxaCartas)
-        }
-    </script>
-</body>
+        </main>
+        <script src="../Truco/API.js"></script>
+    </body>
 </html>
