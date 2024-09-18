@@ -28,15 +28,34 @@
         </div>
     </main>
     <script>
-        function olharCartas(){
-            fetch("https://deckofcardsapi.com/api/deck/2kk0qqi7e3v1/draw/?count=3")
-            .then(function(respostaAPI){
+        function getJsonData(respostaAPI){
                 const json = respostaAPI.json();
                 return json;
-            }).then(function(jsonData){
-                // Pegamos a propriedade cards do objeto json e armazenamos em uma variável;
+        }
+        function atualizaInfo(jsonData){
+            if (!jsonData.success){
+                throw new Error("Erro ao acessar dados da API")
+            }
+            const remaining = jsonData.remaining;
+            const deck_id = jsonData.deck_id;
+            const info1 = document.getElementById('remaining');
+            const info2 = document.getElementById('deck_id');
+            info1.innerText = remaining;
+            info2.innerText = deck_id;
+            return jsonData;
+        }
+        function embaralharCartas(){
+            fetch("https://deckofcardsapi.com/api/deck/2kk0qqi7e3v1/shuffle/?remaining=false")
+            .then(getJsonData)  
+            .then(function(jsonData){
+                console.log = (jsonData);
+                if(jsonData.success){
+                   alert("Baralho Reembaralhado")
+                }      
+            })
+        }
+        function puxaCartas(jsonData){
                 const cards = jsonData.cards;
-                
                 for(let i = 0; i < 3; i++){
                     const id = `carta${i+1}`;
                     const card = document.getElementById(id);
@@ -44,49 +63,16 @@
                     if(img == null){
                         img = document.createElement('img');
                     }
-                    
                     img.setAttribute('src', cards[i].image);
                     card.append(img);
                 }
-
-                // // Pegamos o id do elemento e salvamos em uma variavél;
-                // const card1 = document.getElementById('carta1');
-                // // Criamos um elemento "img"
-                // const img = document.createElement('img');
-                // // Atribuimos a imagem no img
-                // img.setAttribute('src', cards[0].image);
-                // // "Juntamos" a "img" na "card1"
-                // card1.append(img);
-
-                // const card2 = document.getElementById('carta2');
-                // const img2 = document.createElement('img');
-                // img2.setAttribute('src', cards[1].image);
-                // card2.append(img2);
-
-                // const card3 = document.getElementById('carta3');
-                // const img3 = document.createElement('img');
-                // img3.setAttribute('src', cards[2].image);
-                // card3.append(img3);
-
-                // Armazenamos a propriedade remaing do objeto em uma variável;
-                const remaining = jsonData.remaining;
-                // Pegamos o id e salvamos
-                const info1 = document.getElementById('remaining');
-                info1.innerText = remaining;
-                
-                const deck_id = jsonData.deck_id;
-                const info2 = document.getElementById('deck_id');
-                info2.innerText = deck_id;
-            })
         }
-        function embaralharCartas(){
-            fetch("https://deckofcardsapi.com/api/deck/2kk0qqi7e3v1/shuffle/?remaining=false")
-            .then(function(respostaAPI){
-                const json = respostaAPI.json();
-                return json;
-            })   
+        function olharCartas(){
+            fetch("https://deckofcardsapi.com/api/deck/2kk0qqi7e3v1/draw/?count=3")
+            .then(getJsonData)
+            .then(atualizaInfo)
+            .then(puxaCartas)
         }
-        
     </script>
 </body>
 </html>
