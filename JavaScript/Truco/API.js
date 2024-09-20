@@ -3,6 +3,19 @@ let deckID = "yomoduvqk8yk";
 // O outro definindo com um objeto vazio. O problema desse é o que o programa inicia com o objeto vazio, portanto temos que clicar primeiro em novo baralho, para depois mostrar as cartas.
 // let deckID = {};
 
+function Deck(deckID) {
+    this.deckID = deckID;
+    this.listOfCards = "4C,7H,AS,7D,3C,3H,3S,3D,2C,2H,2S,2D,AC,AH,AD,KC,KH,KS,KD,JC,JH,JS,JD,QC,QH,QS,QD";
+    console.log("Criou um baralho.")
+}
+
+const deck1 = Deck();
+const deck2 = new Deck();
+
+console.log(Deck)
+console.log(deck1)
+console.log(deck2)
+
 function novoDeck(){
     fetch("https://deckofcardsapi.com/api/deck/new/shuffle/?cards=4C,7H,AS,7D,3C,3H,3S,3D,2C,2H,2S,2D,AC,AH,AD,KC,KH,KS,KD,JC,JH,JS,JD,QC,QH,QS,QD")
     .then(getJsonData)
