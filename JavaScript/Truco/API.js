@@ -9,13 +9,13 @@ function Deck(deckID) {
     this.deckID = deckID;
     this.listOfCards = "4C,7H,AS,7D,3C,3H,3S,3D,2C,2H,2S,2D,AC,AH,AD,KC,KH,KS,KD,JC,JH,JS,JD,QC,QH,QS,QD";
 
-    this.novoDeck = function() {
-            fetch("https://deckofcardsapi.com/api/deck/new/shuffle/?cards=4C,7H,AS,7D,3C,3H,3S,3D,2C,2H,2S,2D,AC,AH,AD,KC,KH,KS,KD,JC,JH,JS,JD,QC,QH,QS,QD")
-            .then(getJsonData)
-            .then(function(jsonData){
-            deckID = jsonData.deck_id;
-        })
-    }
+    // this.novoDeck = function() {
+    //     fetch(`https://deckofcardsapi.com/api/deck/new/shuffle/?cards=${this.listOfCards}`)
+    //     .then(getJsonData)
+    //     .then(function(jsonData){
+    //     deckID = jsonData.deck_id;
+    //     })
+    // }
     this.olharCartas = function(){
         fetch(`https://deckofcardsapi.com/api/deck/${this.deckID}/draw/?count=3`)
         .then(getJsonData)
@@ -30,14 +30,6 @@ function Deck(deckID) {
         .catch(erro => alert(erro))   
     }
 }
-
-// function novoDeck(){
-//     fetch("https://deckofcardsapi.com/api/deck/new/shuffle/?cards=4C,7H,AS,7D,3C,3H,3S,3D,2C,2H,2S,2D,AC,AH,AD,KC,KH,KS,KD,JC,JH,JS,JD,QC,QH,QS,QD")
-//     .then(getJsonData)
-//     .then(function(jsonData){
-//         deckID = jsonData.deck_id;
-//     })
-// }
 function getJsonData(respostaAPI){
     const json = respostaAPI.json();
     return json;
@@ -54,12 +46,7 @@ function atualizaInfo(jsonData){
     info2.innerText = deck_id;
     return jsonData;
 }
-// function embaralharCartas(){
-//     fetch(`https://deckofcardsapi.com/api/deck/${deckID}/shuffle/?remaining=false`)
-//     .then(getJsonData)  
-//     .then(atualizaInfo)  
-//     .catch(erro => alert(erro))   
-// }
+
 function puxaCartas(jsonData){
     const cards = jsonData.cards;
     for(let i = 0; i < 3; i++){
@@ -73,11 +60,3 @@ function puxaCartas(jsonData){
         card.append(img);
     }
 }
-// function olharCartas(){
-//     fetch(`https://deckofcardsapi.com/api/deck/${deckID}/draw/?count=3`)
-//     .then(getJsonData)
-//     .then(atualizaInfo)
-//     .then(puxaCartas)
-//     .catch(erro => alert(erro))  
-// }
-
