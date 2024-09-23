@@ -16,7 +16,7 @@ body{
     width: 100%;
     margin: 0 auto;
     border-radius: 8px;
-    background-color: blue;
+    background-color: green;
 }
 
 .carta{
@@ -24,7 +24,7 @@ body{
     width: 226px;
     height: 314px;
     border-radius: 8px;
-    background-color: yellow;
+    background-color: rgb(111, 111, 111);
 }
 
 .painel{
@@ -32,7 +32,7 @@ body{
     display: flex;
     width: 400px;
     border-radius: 3px;
-    background-color: red;
+    background-color: green;
 }
 
 button{
