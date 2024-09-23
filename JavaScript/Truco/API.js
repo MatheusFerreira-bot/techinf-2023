@@ -10,7 +10,7 @@ function Deck(deckID) {
 
     this.olharCartas = function(){
     fetch(`https://deckofcardsapi.com/api/deck/${this.deckID}/draw/?count=3`)
-        .then(getJsonData)
+        .then(respostaAPI => respostaAPI.json())
         .then(atualizaInfo)
         .then(puxaCartas)
         .catch(erro => alert(erro))  
@@ -18,14 +18,14 @@ function Deck(deckID) {
 
     this.embaralharCartas = function() {
         fetch(`https://deckofcardsapi.com/api/deck/${this.deckID}/shuffle/?remaining=false`)
-        .then(getJsonData)  
+        .then(respostaAPI => respostaAPI.json())
         .then(atualizaInfo)  
         .catch(erro => alert(erro))   
     }
 
     this.novoDeck = function() {
         fetch(`https://deckofcardsapi.com/api/deck/new/shuffle/?cards=${this.listOfCards}`)
-        .then(getJsonData)
+        .then(respostaAPI => respostaAPI.json())
         .then(atualizaInfo)
         .then(setDeckId)
     }
@@ -50,11 +50,6 @@ function Deck(deckID) {
         return jsonData;
     }
 
-    function getJsonData(respostaAPI){
-        const json = respostaAPI.json();
-        return json;
-    }
-
     function puxaCartas(jsonData){
         const cards = jsonData.cards;
         for(let i = 0; i < 3; i++){
@@ -68,5 +63,5 @@ function Deck(deckID) {
             card.append(img);
         }
     }
-    
+
 }
